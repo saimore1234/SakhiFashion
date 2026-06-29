@@ -6,7 +6,7 @@ import { Facebook, Instagram, Twitter, Youtube, ArrowRight } from "lucide-react"
 import { navLinks } from "@/data/content";
 
 const socials = [
-  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Instagram, href: "https://instagram.com/sakhifashion", label: "Instagram" },
   { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
   { icon: Youtube, href: "https://youtube.com", label: "YouTube" },

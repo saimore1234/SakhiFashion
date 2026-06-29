@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Heart, Menu, ShoppingBag, X, Search } from "lucide-react";
+import { Heart, Menu, ShoppingBag, X, Search, Instagram } from "lucide-react";
 import { navLinks } from "@/data/content";
 import { useShop } from "@/context/CartContext";
 import ThemeToggle from "./ThemeToggle";
@@ -87,6 +87,15 @@ export default function Navbar() {
             >
               <Search size={18} />
             </button>
+            <a
+              href="https://instagram.com/sakhifashion"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow us on Instagram"
+              className="hidden h-10 w-10 place-items-center rounded-full border border-ink-900/15 text-ink-900 transition-colors hover:border-gold-400 hover:text-gold-500 dark:border-cream-50/20 dark:text-cream-50 sm:grid"
+            >
+              <Instagram size={18} />
+            </a>
             <ThemeToggle />
             <IconBadge icon={Heart} count={wishlistCount} label="Wishlist" />
             <IconBadge icon={ShoppingBag} count={cartCount} label="Bag" />
@@ -149,7 +158,15 @@ export default function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col gap-3">
+                <a
+                  href="https://instagram.com/sakhifashion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline w-full"
+                >
+                  <Instagram size={16} /> Follow on Instagram
+                </a>
                 <Link
                   href="/admin"
                   onClick={() => setOpen(false)}

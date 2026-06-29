@@ -21,7 +21,7 @@ export default function InstagramGallery() {
           {instagramPosts.map((src, i) => (
             <Reveal key={i} delay={i * 0.05}>
               <motion.a
-                href="https://instagram.com"
+                href="https://instagram.com/sakhifashion"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 0.98 }}
@@ -49,7 +49,7 @@ export default function InstagramGallery() {
         <Reveal delay={0.2}>
           <div className="mt-10 text-center">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/sakhifashion"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline"
