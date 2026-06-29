@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fdfbf8;
+  --fg: #1a1413;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: rgba(26, 20, 19, 0.1);
+}
+
+.dark {
+  --bg: #0f0b0a;
+  --fg: #f4f2f1;
+  --glass-bg: rgba(36, 28, 27, 0.55);
+  --glass-border: rgba(198, 161, 91, 0.18);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+}
+
+@layer base {
+  * {
+    @apply border-blush-100/40;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+  ::selection {
+    background: theme("colors.gold.300");
+    color: theme("colors.ink.900");
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface */
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+  }
+
+  .glass-strong {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply text-[0.7rem] font-sans uppercase tracking-luxe text-gold-500 dark:text-gold-300;
+  }
+
+  /* Section vertical rhythm */
+  .section {
+    @apply px-5 py-20 sm:px-8 md:py-28 lg:px-12;
+  }
+
+  .container-luxe {
+    @apply mx-auto w-full max-w-7xl;
+  }
+
+  /* Gold gradient text */
+  .text-gold-gradient {
+    background: linear-gradient(120deg, #b8893a 0%, #e3cb8c 45%, #c6a15b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Primary luxury button */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-ink-900 px-7 py-3 font-sans text-sm uppercase tracking-[0.15em] text-cream-50 transition-all duration-300 hover:shadow-gold dark:bg-gold-400 dark:text-ink-900;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink-900/40 px-7 py-3 font-sans text-sm uppercase tracking-[0.15em] text-ink-900 transition-all duration-300 hover:border-gold-400 hover:text-gold-500 dark:border-cream-50/40 dark:text-cream-50 dark:hover:border-gold-300 dark:hover:text-gold-300;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-300/50 to-transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#c6a15b, #b8893a);
+  border-radius: 99px;
+  border: 2px solid var(--bg);
+}
+
+/* Shimmer skeleton */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: rgba(198, 161, 91, 0.08);
+}
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(198, 161, 91, 0.18),
+    transparent
+  );
+  animation: shimmer 1.6s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet {
+  background: #c6a15b !important;
+  opacity: 0.4;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  width: 22px !important;
+  border-radius: 4px !important;
+  transition: width 0.3s ease;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #c6a15b !important;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 22px !important;
+}
